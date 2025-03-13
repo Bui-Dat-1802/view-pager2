@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<shape xmlns:android="http://schemas.android.com/apk/res/android"
+    android:shape="oval"> <!-- Định dạng hình elip -->
+
+    <!-- Màu nền cam -->
+    <solid android:color="#FF9800"/>
+
+    <!-- Viền nhẹ nếu muốn -->
+    <stroke android:width="2dp" android:color="#F57C00"/>
+
+    <!-- Padding giúp nút không bị méo -->
+    <padding android:left="16dp" android:right="16dp"/>
+</shape>
