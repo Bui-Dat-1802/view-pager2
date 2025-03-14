@@ -33,8 +33,7 @@ class RvTabAdapter (private val tabs: List<String>, // Danh sách tiêu đề ta
             txtTab.text=item
         }
         holder.itemView.setOnClickListener{
-            selectedPosition=position
-            notifyDataSetChanged()
+            setSelectedPosition(position)
             onTabClick.invoke(position)
         }
     }
@@ -42,4 +41,13 @@ class RvTabAdapter (private val tabs: List<String>, // Danh sách tiêu đề ta
 
 //    var ds: List<Contact>, val onclick: (Contact) -> Unit) : RecyclerView.Adapter<RvAdapter.PeopleHolder>()
 override fun getItemCount(): Int = tabs.size
+
+    fun setSelectedPosition(position: Int) {
+        if (selectedPosition != position) {
+            val oldPosition = selectedPosition
+            selectedPosition = position
+            notifyItemChanged(oldPosition) // Cập nhật tab cũ
+            notifyItemChanged(selectedPosition) // Cập nhật tab mới
+        }
+    }
 }

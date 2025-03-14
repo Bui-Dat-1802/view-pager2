@@ -1,5 +1,6 @@
 package com.example.viewpager2
 
+import android.icu.text.Transliterator.Position
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -50,6 +51,13 @@ class FragmentMain:Fragment (){
         binding.rvTabbbbb.layoutManager =
             LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false)
         binding.rvTabbbbb.adapter=tabAdapter
+
+        binding.viewPage.registerOnPageChangeCallback(object : ViewPager2.OnPageChangeCallback() {
+            override fun onPageSelected(position: Int) {
+                super.onPageSelected(position)
+                tabAdapter.setSelectedPosition(position) // Cập nhật tab khi vuốt
+            }
+        })
 
 //        val tabLayout: TabLayout = view.findViewById(R.id.tap_layout)
 //        TabLayoutMediator(tabLayout, viewPager) { tab, position ->
